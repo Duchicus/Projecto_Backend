@@ -1,9 +1,9 @@
-const { Review, User } = require("../models/index.js");
+const { review, User } = require("../models/index.js");
 
 const ReviewController = {
     async create(req, res) {
         try {
-            await Review.create(req.body);
+            await review.create(req.body);
             res.status(201).send({msg:"Producto creado con exito"})
         } catch (error) {
             console.error(error);
@@ -11,7 +11,7 @@ const ReviewController = {
         }
     },async getAll(req,res){
         try {
-            const rev = await Review.findAll({
+            const rev = await review.findAll({
                 include : [{model:User,attributes:["email"]}]
             })
             res.send(rev)
@@ -21,7 +21,7 @@ const ReviewController = {
         }
     },async update(req, res) {
         try {
-            await Review.update(req.body, {
+            await review.update(req.body, {
                     where: {
                         id: req.params.id
                     }
@@ -33,7 +33,7 @@ const ReviewController = {
         }
     },async delete(req, res) {
         try {
-            await Review.destroy({
+            await review.destroy({
                     where: {
                         id: req.params.id
                     }
