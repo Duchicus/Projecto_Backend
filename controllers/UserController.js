@@ -7,14 +7,14 @@ const { Op} = Sequelize;
 
 
 const UserController = {
-    async register(req, res) {
+    async register(req, res, next) {
         try {
             const password = bcrypt.hashSync(req.body.password,10)
             await User.create({...req.body, password:password});
             res.status(201).send({msg:"Usuario creado con exito"})
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            next(error)
         }
     },async login(req, res) {
         try {
