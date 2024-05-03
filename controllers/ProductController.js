@@ -45,8 +45,9 @@ const ProductController = {
     },async getById(req,res){
         try {
             const product = await Product.findByPk(req.params.id,{
-                include : [{model:Category, attributes:["name"], through: { attributes: [] }}],
-                include :[{model:review, attributes:["Text", "UserId", "ProductId"]}]
+                include : [
+                    {model:Category, attributes:["name"], through: { attributes: [] }},
+                    {model:review, attributes:["Text", "UserId", "ProductId"]}],
             });
             res.send(product)
         } catch (error) {
@@ -92,8 +93,9 @@ const ProductController = {
     },async getAll(req,res){
         try {
             const product = await Product.findAll({
-                include : [{model:Category, attributes:["name"], through: { attributes: [] }}],
-                include :[{model:review, attributes:["Text", "UserId", "ProductId"]}]
+                include : [
+                {model:Category, attributes:["name"], through: { attributes: [] }},
+                {model:review, attributes:["Text", "UserId", "ProductId"]}],
             });
             res.send(product)
         } catch (error) {
