@@ -4,7 +4,7 @@ const ReviewController = {
     async create(req, res) {
         try {
             await review.create(req.body);
-            res.status(201).send({message:"Producto creado con exito"})
+            res.status(201).send({message:"Review creado con exito"})
         } catch (error) {
             console.error(error);
             res.status(500).send({message:"Error de servidor"})

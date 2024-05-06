@@ -15,6 +15,6 @@ router.get("/price/:price",ProductController.getByPrice)
 router.get("/desc",ProductController.getByDesc)
 router.get("/",ProductController.getAll)
 
-router.post('/image',uploadUserProductsImages.single('imageProduct'), ProductController.create);
+router.post('/image',authentication,isAdmin,uploadUserProductsImages.single('imageProduct'), ProductController.create);
 
 module.exports = router
