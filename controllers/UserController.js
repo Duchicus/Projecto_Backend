@@ -3,6 +3,7 @@ const { User, Token, Sequelize, Order, Product } = require("../models/index");
 const bcrypt = require ('bcryptjs');
 const jwt = require ('jsonwebtoken');
 const { jwt_secret } = require ('../config/config.json')['development']
+const transporter = require("../config/nodemailer");
 const { Op} = Sequelize;
 
 
@@ -10,11 +11,25 @@ const UserController = {
     async register(req, res, next) {
         try {
             if(!req.body.password){
-                return res.status(400).send({msg:"Rellena tu contraseña"})
+                return res.status(400).send({message:"Rellena tu contraseña"})
             }
             const password = bcrypt.hashSync(req.body.password,10)
-            await User.create({...req.body, password:password});
-            res.status(201).send({msg:"Usuario creado con exito"})
+            await User.create({...req.body, password:password, confirmed:false, role:"user"});
+
+            const emailToken = jwt.sign({email:req.body.email},jwt_secret,{expiresIn:'48h'})
+            const url = 'http://localhost:3000/users/confirm/'+ emailToken
+            await transporter.sendMail({
+                to: req.body.email,
+                subject: "Confirme su registro",
+                html: `<h3>Bienvenido, estás a un paso de registrarte </h3>
+                <a href="${url}"> Clica para confirmar tu registro</a>
+                Este enlace caduca en 48h.
+                `,
+            });
+
+      
+        
+            res.status(201).send({message:"Usuario creado con exito"})
         } catch (error) {
             console.error(error);
             next(error)
@@ -29,6 +44,9 @@ const UserController = {
             if(!user){
                 return res.status(400).send({message:"Usuario o contraseña incorrectos"})
             }
+            if(!user.confirmed){
+                return res.status(400).send({message:"Falta que confirmes tu correo"})
+            }
             const isMatch = bcrypt.compareSync(req.body.password, user.password);
             if(!isMatch){
                 return res.status(400).send({message:"Usuario o contraseña incorrectos"})
@@ -40,7 +58,7 @@ const UserController = {
             res.send(`Bienvenid@ ${user.email}`,user, token)
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            res.status(500).send({message:"Error de servidor"})
         }
     },async logout(req, res) {
         try {
@@ -65,7 +83,7 @@ const UserController = {
             res.send(user)
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            res.status(500).send({message:"Error de servidor"})
         }
     },async getContent(req,res){
         try {
@@ -78,9 +96,23 @@ const UserController = {
             res.send(user)
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            res.status(500).send({message:"Error de servidor"})
         }
-    }
+    },async confirm(req,res){
+        try {
+        const token = req.params.emailToken
+        const payload = jwt.verify(token,jwt_secret)
+          await User.update({confirmed:true},{
+            where:{
+              email: payload.email
+            }
+          })
+          res.status(201).send( "Usuario confirmado con éxito" );
+        } catch (error) {
+          console.error(error)
+        }
+      },
+    
 }
 
 module.exports = UserController

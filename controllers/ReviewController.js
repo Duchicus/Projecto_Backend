@@ -4,10 +4,10 @@ const ReviewController = {
     async create(req, res) {
         try {
             await review.create(req.body);
-            res.status(201).send({msg:"Producto creado con exito"})
+            res.status(201).send({message:"Producto creado con exito"})
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            res.status(500).send({message:"Error de servidor"})
         }
     },async getAll(req,res){
         try {
@@ -17,7 +17,7 @@ const ReviewController = {
             res.send(rev)
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            res.status(500).send({message:"Error de servidor"})
         }
     },async update(req, res) {
         try {
@@ -29,7 +29,7 @@ const ReviewController = {
             res.send("Review actualizada con exito")
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            res.status(500).send({message:"Error de servidor"})
         }
     },async delete(req, res) {
         try {
@@ -41,7 +41,7 @@ const ReviewController = {
             res.send("Review eliminada con exito")
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            res.status(500).send({message:"Error de servidor"})
         }
     }
 }

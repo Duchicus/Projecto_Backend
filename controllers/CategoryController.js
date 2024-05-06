@@ -4,10 +4,10 @@ const CategoryController = {
     async create(req, res) {
         try {
             await Category.create(req.body);
-            res.status(201).send({msg:"Categoria creado con exito"})
+            res.status(201).send({message:"Categoria creado con exito"})
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            res.status(500).send({message:"Error de servidor"})
         }
     },async update(req, res) {
         try {
@@ -19,7 +19,7 @@ const CategoryController = {
             res.send("Categoria actualizada con exito")
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            res.status(500).send({message:"Error de servidor"})
         }
     },async delete(req, res) {
         try {
@@ -36,7 +36,7 @@ const CategoryController = {
             res.send("Categoria eliminada con exito")
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            res.status(500).send({message:"Error de servidor"})
         }
     },async getById(req,res){
         try {
@@ -44,7 +44,7 @@ const CategoryController = {
             res.send(category)
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            res.status(500).send({message:"Error de servidor"})
         }
     },async getByName(req,res){
         try {
@@ -56,7 +56,7 @@ const CategoryController = {
             res.send(category)
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            res.status(500).send({message:"Error de servidor"})
         }
     },async getAll(req,res){
         try {
@@ -66,7 +66,7 @@ const CategoryController = {
             res.send(category)
         } catch (error) {
             console.error(error);
-            res.status(500).send({msg:"Error de servidor"})
+            res.status(500).send({message:"Error de servidor"})
         }
     }
 }

@@ -4,6 +4,9 @@
         "password": "tu pass",
         "database": "e-commerce",
         "host": "127.0.0.1",
-        "dialect": "mysql"
+        "dialect": "mysql",
+        "jwt_secret": "tu secretito",
+        "user":"tu correo",
+        "pass":"tu contra"
       }
 }

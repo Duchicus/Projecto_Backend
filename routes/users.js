@@ -8,5 +8,6 @@ router.post("/login",UserController.login)
 router.delete('/logout',authentication,UserController.logout)
 router.get('/',UserController.getAll)
 router.get('/user',authentication, UserController.getContent)
+router.get('/confirm/:emailToken',UserController.confirm)
 
 module.exports = router

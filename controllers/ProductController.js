@@ -7,7 +7,7 @@ const ProductController = {
             if (req.file) req.body.image_path = req.file.filename;
             const product = await Product.create(req.body);
             product.addCategory(req.body.CategoryId)
-            res.status(201).send({ msg: "Producto creado con exito" })
+            res.status(201).send({ message: "Producto creado con exito" })
         } catch (error) {
             console.error(error);
             next(error)
@@ -25,7 +25,7 @@ const ProductController = {
             res.send("Producto actualizado con exito")
         } catch (error) {
             console.error(error);
-            res.status(500).send({ msg: "Error de servidor" })
+            res.status(500).send({ message: "Error de servidor" })
         }
     }, async delete(req, res) {
         try {
@@ -42,7 +42,7 @@ const ProductController = {
             res.send("Producto eliminado con exito")
         } catch (error) {
             console.error(error);
-            res.status(500).send({ msg: "Error de servidor" })
+            res.status(500).send({ message: "Error de servidor" })
         }
     }, async getById(req, res) {
         try {
@@ -54,7 +54,7 @@ const ProductController = {
             res.send(product)
         } catch (error) {
             console.error(error);
-            res.status(500).send({ msg: "Error de servidor" })
+            res.status(500).send({ message: "Error de servidor" })
         }
     }, async getByName(req, res) {
         try {
@@ -66,7 +66,7 @@ const ProductController = {
             res.send(product)
         } catch (error) {
             console.error(error);
-            res.status(500).send({ msg: "Error de servidor" })
+            res.status(500).send({ message: "Error de servidor" })
         }
     }, async getByPrice(req, res) {
         try {
@@ -78,7 +78,7 @@ const ProductController = {
             res.send(product)
         } catch (error) {
             console.error(error);
-            res.status(500).send({ msg: "Error de servidor" })
+            res.status(500).send({ message: "Error de servidor" })
         }
     }, async getByDesc(req, res) {
         try {
@@ -90,7 +90,7 @@ const ProductController = {
             res.send(product)
         } catch (error) {
             console.error(error);
-            res.status(500).send({ msg: "Error de servidor" })
+            res.status(500).send({ message: "Error de servidor" })
         }
     }, async getAll(req, res) {
         try {
@@ -102,7 +102,7 @@ const ProductController = {
             res.send(product)
         } catch (error) {
             console.error(error);
-            res.status(500).send({ msg: "Error de servidor" })
+            res.status(500).send({ message: "Error de servidor" })
         }
     }, async serveProductImage(req, res) {
         try {
