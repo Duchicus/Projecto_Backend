@@ -1,10 +1,11 @@
 const express = require("express")
 const ReviewController = require("../controllers/ReviewController")
 const router = express.Router()
+const {authentication} = require('../middleware/authentication')
 
-router.post("/",ReviewController.create)
-router.get("/",ReviewController.getAll)
-router.put("/id/:id",ReviewController.update)
-router.delete("/id/:id",ReviewController.delete)
+router.post("/",authentication,ReviewController.create)
+router.get("/",authentication,ReviewController.getAll)
+router.put("/id/:id",authentication,ReviewController.update)
+router.delete("/id/:id",authentication,ReviewController.delete)
 
 module.exports = router

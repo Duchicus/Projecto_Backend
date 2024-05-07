@@ -7,7 +7,7 @@ const ProductController = {
             if (req.file) req.body.image_path = req.file.filename;
             const product = await Product.create(req.body);
             product.addCategory(req.body.CategoryId)
-            res.status(201).send({ message: "Producto creado con exito" })
+            res.status(201).send({ message: "Producto creado con exito" , product})
         } catch (error) {
             console.error(error);
             next(error)

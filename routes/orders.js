@@ -4,6 +4,6 @@ const {authentication, isAdmin} = require('../middleware/authentication')
 const router = express.Router()
 
 router.post("/",authentication,isAdmin,OrderController.create)
-router.get("/",OrderController.getAll)
+router.get("/",authentication,OrderController.getAll)
 
 module.exports = router

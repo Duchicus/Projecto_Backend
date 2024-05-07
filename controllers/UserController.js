@@ -14,7 +14,7 @@ const UserController = {
                 return res.status(400).send({message:"Rellena tu contraseña"})
             }
             const password = bcrypt.hashSync(req.body.password,10)
-            await User.create({...req.body, password:password, confirmed:false, role:"user"});
+            const user = await User.create({...req.body, password:password, confirmed:false, role:"user"});
 
             const emailToken = jwt.sign({email:req.body.email},jwt_secret,{expiresIn:'48h'})
             const url = 'http://localhost:3001/users/confirm/'+ emailToken
@@ -26,7 +26,7 @@ const UserController = {
                 Este enlace caduca en 48h.
                 `,
             });
-            res.status(201).send({message:"Usuario creado con exito"})
+            res.status(201).send({message:"Usuario creado con exito", user})
         } catch (error) {
             console.error(error);
             next(error)
@@ -52,7 +52,7 @@ const UserController = {
             await Token.create({
                 token, UserId: user.id
             });
-            res.send(`Bienvenid@ ${user.email}`,user, token)
+            res.send({msg:`Bienvenid@ ${user.email}`,user, token})
         } catch (error) {
             console.error(error);
             res.status(500).send({message:"Error de servidor"})

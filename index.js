@@ -20,3 +20,5 @@ app.use("/reviews", require("./routes/reviews"))
 app.use(typeError)
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
+
+module.exports = app;
