@@ -8,5 +8,13 @@
         "jwt_secret": "tu secretito",
         "user":"tu correo",
         "pass":"tu contra"
+      },
+      "test": {
+        "username": "tu username",
+        "password": "tu pass",
+        "database": "e-commerce",
+        "host": "127.0.0.1",
+        "dialect": "mysql",
+        "jwt_secret": "tu secretito"
       }
 }
