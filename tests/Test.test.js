@@ -34,7 +34,7 @@ describe("testing", () => {
       const res = await request(app)
         .get("/users/confirm/" + emailToken)
         .expect(201);
-      expect(res.text).toBe("Usuario confirmado con éxito");
+      expect(res.body.message).toBe("Usuario confirmado con éxito");
     });
     
     test("Login a user", async () => {

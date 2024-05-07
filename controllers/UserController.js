@@ -104,7 +104,7 @@ const UserController = {
               email: payload.email
             }
           })
-          res.status(201).send( "Usuario confirmado con éxito" );
+          res.status(201).send({message:"Usuario confirmado con éxito"} );
         } catch (error) {
           console.error(error)
         }
