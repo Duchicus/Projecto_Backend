@@ -1,40 +1,27 @@
-![image](https://github.com/Duchicus/Projecto_Backend/assets/145117344/203855f2-13b9-4ab7-b44d-bff5f38b2aa1)# README de proyecto Backend con sequelize
+# README de proyecto Backend con sequelize
 
 Este repositorio contiene un proyecto de backend con uso de base de datos para creacion de Usuario con pedidos, productos, categorias y criticas.
 
 ## Características
-- **Configuracion:** En la carpeta de configuracion tendremos un archiv js en el que debereis poner vuestra configuracion de base de datos.
+- **Configuracion:** En la carpeta de configuracion tendremos un archiv js en el que debereis poner vuestra configuracion de base de datos, tambien tendremos un archivo que usaremos para poder mandar emails cuando el usuario se registre.
 
-- **Controladores:** Existiran controladores de todas las tablas, para crear endpoints tanto para crear, modificar, recojer y eliminar.
+- **Controladores:** Existiran controladores de todas las tablas, para crear endpoints tanto para crear, modificar, recojer y eliminar.(CRUD)
 
- ![image](https://github.com/Duchicus/Projecto_Quiz_Js/assets/145117344/8f865cf2-eabe-495a-8cf9-c29590d0b21e)
+- **Middleware:** Tendremos una carpeta llamada middleware la cual almacenara 3 archivos necesarios, el primero sera authentication y lo usaremos para agregarselo a la ruta necesaria para que sea necesario un token de usuario para usarla. El segundo archivo sera para mostrar los errores pertinentes cuando no se realice una conexion correctamente. Y el ultimo sera el multer, que lo usaremos para agregar imagenes a los productos desde tu ordenador.
 
-- **Preguntas:** El juego presenta una serie de preguntas, cada una mostrando una imagen de un personaje de "Rick y Morty".
+- **Modelos:** Se crearan los modelos necesarios para unir las tablas y agregarles los campos necesarios a ellas, con sus respectivas caracteristicas.
 
-![image](https://github.com/Duchicus/Projecto_Quiz_Js/assets/145117344/61b9f9d5-e303-4ce6-9ffa-5083d748fc8c)
+- **Rutas:** Tendremos una carpeta llamada routes la cual almacenara todas las rutas de nuestro proyecto, cada ruta servira para algo distinto y se le podra implementar el authentication si queremos que las usen solo los usuarios logeados y el isAdmin que forzara a ser usada solo por los usuarios con el rol de Admin o SuperAdmin.
 
-- **Botones de Respuesta:** Los jugadores seleccionan su respuesta entre opciones de opción múltiple presentadas como botones.
+- **Seeders:** Habra una carpeta de seeders la cual usaremos para crear 5 seeders para productos, para que sea mas comodo el uso de la tabla, y que no sea necesario el crearlos a mano.
 
-  ![image](https://github.com/Duchicus/Projecto_Quiz_Js/assets/145117344/c9517c9a-e4e0-476f-b745-f0d7e3ebb690)
+- **Tests:** Generaremos 6 tests, uno para el registro del usuario, otro para la comprobacion por correo de el, para el login, para una creacion de producto , mostrar los productos y el logout.
 
-- **Puntuación:** Los jugadores obtienen puntos por cada respuesta correcta.
-- **Resultados:** Después de responder todas las preguntas, los jugadores reciben su puntuación final y se les informa si ganaron o perdieron.
+- **Package.json:** Este archivo servira para poder ejecutar con los scripts de manera comoda el proyecto y los tests.
 
-![image](https://github.com/Duchicus/Projecto_Quiz_Js/assets/145117344/c5c193c6-0d23-4abc-a301-193ededda20b)
+- **Base de datos:** La base de datos tendra 5 tablas (usuarios, criticas, pedidos, productos y categorias) y 2 intermedias (categorias_productos, productos_pedidos).
 
-- **Podio:** Los jugadores pueden ver el podio para ver a los mejores puntajes.
+- **Relaciones:** (Usuarios 1-N Pedidos),(Pedidos N-M Productos),(Productos N-M Categorias),(Usuarios 1-N Criticas),(Productos 1-N Criticas).
 
-![image](https://github.com/Duchicus/Projecto_Quiz_Js/assets/145117344/a41148df-0887-4deb-907b-d6f8ea08d720)
-  
-- **Reinicio:** Los jugadores pueden reiniciar el juego para jugar de nuevo.
+![alt text](image.png)
 
-  ![image](https://github.com/Duchicus/Projecto_Quiz_Js/assets/145117344/059dd2a8-a9fe-4c76-86e9-d0bb0257d367)
-
-
-## Cómo Jugar
-1. Haz clic en el botón "START" para comenzar el juego.
-2. Responde cada pregunta seleccionando el nombre correcto del personaje entre las opciones de opción múltiple.
-3. Gana puntos por cada respuesta correcta.
-4. Después de responder todas las preguntas, ve tu puntuación final y verifica si ganaste o perdiste.
-5. Opcionalmente, ve el podio para ver a los mejores puntajes.
-6. Reinicia el juego para jugar de nuevo.
