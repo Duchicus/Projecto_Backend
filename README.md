@@ -2,6 +2,13 @@
 
 Este repositorio contiene un proyecto de backend con uso de base de datos para creacion de Usuario con pedidos, productos, categorias y criticas.
 
+## Dependencias
+- Node.js
+- Express.ss
+- Sequelize
+- bycrypt.js
+- jsonwebtoken
+
 ## Características
 - **Configuracion:** En la carpeta de configuracion tendremos un archiv js en el que debereis poner vuestra configuracion de base de datos, tambien tendremos un archivo que usaremos para poder mandar emails cuando el usuario se registre.
 
