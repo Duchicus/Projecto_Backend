@@ -1,9 +1,11 @@
-# README del Juego de Quiz de Rick y Morty
+![image](https://github.com/Duchicus/Projecto_Backend/assets/145117344/203855f2-13b9-4ab7-b44d-bff5f38b2aa1)# README de proyecto Backend con sequelize
 
-Este repositorio contiene un juego de quiz desarrollado utilizando HTML, CSS y JavaScript. El juego está basado en la serie de televisión animada "Rick y Morty" y desafía a los jugadores a identificar personajes de la serie.
+Este repositorio contiene un proyecto de backend con uso de base de datos para creacion de Usuario con pedidos, productos, categorias y criticas.
 
 ## Características
-- **Botón de Inicio:** Al hacer clic en el botón "START" comienza el juego.
+- **Configuracion:** En la carpeta de configuracion tendremos un archiv js en el que debereis poner vuestra configuracion de base de datos.
+
+- **Controladores:** Existiran controladores de todas las tablas, para crear endpoints tanto para crear, modificar, recojer y eliminar.
 
  ![image](https://github.com/Duchicus/Projecto_Quiz_Js/assets/145117344/8f865cf2-eabe-495a-8cf9-c29590d0b21e)
 
