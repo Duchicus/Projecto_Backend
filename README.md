@@ -2,6 +2,11 @@
 
 Este repositorio contiene un proyecto de backend con uso de base de datos para creacion de Usuario con pedidos, productos, categorias y criticas.
 
+## Instalación
+1. Clona este repositorio en tu máquina local.
+2. Instala las dependencias utilizando npm: npm install
+3. Asegúrate de tener una base de datos configurada y que los detalles de conexión estén actualizados en el archivo `config.json`.
+
 ## Características
 - **Configuracion:** En la carpeta de configuracion tendremos un archiv js en el que debereis poner vuestra configuracion de base de datos, tambien tendremos un archivo que usaremos para poder mandar emails cuando el usuario se registre.
 
