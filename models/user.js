@@ -28,7 +28,8 @@ module.exports = (sequelize, DataTypes) => {
         },
       },
     },
-    role: DataTypes.STRING
+    role: DataTypes.STRING,
+    confirmed: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'User',

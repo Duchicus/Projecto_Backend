@@ -17,7 +17,7 @@ const UserController = {
             await User.create({...req.body, password:password, confirmed:false, role:"user"});
 
             const emailToken = jwt.sign({email:req.body.email},jwt_secret,{expiresIn:'48h'})
-            const url = 'http://localhost:3000/users/confirm/'+ emailToken
+            const url = 'http://localhost:3001/users/confirm/'+ emailToken
             await transporter.sendMail({
                 to: req.body.email,
                 subject: "Confirme su registro",
@@ -26,9 +26,6 @@ const UserController = {
                 Este enlace caduca en 48h.
                 `,
             });
-
-      
-        
             res.status(201).send({message:"Usuario creado con exito"})
         } catch (error) {
             console.error(error);
