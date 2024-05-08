@@ -8,7 +8,7 @@ let token;
 
 describe("testing", () => {
   const user = {
-    email: "mpiernash@gmail.com",
+    email: "ejemplo@gmail.com",
     password: "123456",
     role: "user",
     confirmed: false,
