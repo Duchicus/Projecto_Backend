@@ -102,7 +102,7 @@ const ProductController = {
             res.send(product)
         } catch (error) {
             console.error(error);
-            res.status(500).send({ message: "Error de servidor" })
+            res.status(500).send({ message: "Error de servidor", error })
         }
     }, async serveProductImage(req, res) {
         try {

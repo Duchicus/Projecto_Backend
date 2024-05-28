@@ -13,7 +13,7 @@ router.get("/id/:id",authentication,ProductController.getById)
 router.get("/name/:name",authentication,ProductController.getByName)
 router.get("/price/:price",authentication,ProductController.getByPrice)
 router.get("/desc",authentication,ProductController.getByDesc)
-router.get("/",authentication,ProductController.getAll)
+router.get("/",ProductController.getAll)
 
 router.post('/image',authentication,isAdmin,uploadUserProductsImages.single('imageProduct'), ProductController.create);
 
