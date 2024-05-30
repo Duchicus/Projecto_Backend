@@ -6,7 +6,7 @@ const router = express.Router()
 const { uploadUserProductsImages } = require('../middleware/multer');
 
 
-router.post("/",authentication,isAdmin,ProductController.create)
+router.post('/',authentication,isAdmin,uploadUserProductsImages.single('image_path'), ProductController.create);
 router.delete("/id/:id",authentication,isAdmin,ProductController.delete)
 router.put("/id/:id",authentication,isAdmin,ProductController.update)
 router.get("/id/:id",authentication,ProductController.getById)
@@ -15,6 +15,5 @@ router.get("/price/:price",authentication,ProductController.getByPrice)
 router.get("/desc",authentication,ProductController.getByDesc)
 router.get("/",ProductController.getAll)
 
-router.post('/image',authentication,isAdmin,uploadUserProductsImages.single('imageProduct'), ProductController.create);
 
 module.exports = router
